@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гуманитарная помощь</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="/static/styles.css">
+    <script>
+        // Определяем, запущен ли файл через сервер или открыт напрямую
+        const isServer = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+        const staticPath = isServer ? '/static/' : '';
+        
+        // Динамически подключаем стили
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = staticPath + 'styles.css';
+        document.head.appendChild(link);
+    </script>
 </head>
 <body>
     <div class="container">
@@ -87,6 +97,11 @@
             </div>
         </div>
     </div>
-    <script src="/static/script.js"></script>
+    <script>
+        // Динамически подключаем скрипт
+        const script = document.createElement('script');
+        script.src = staticPath + 'script.js';
+        document.body.appendChild(script);
+    </script>
 </body>
 </html>
