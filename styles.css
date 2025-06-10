@@ -1,0 +1,257 @@
+:root {
+    --tg-theme-bg-color: #ffffff;
+    --tg-theme-text-color: #000000;
+    --tg-theme-hint-color: #999999;
+    --tg-theme-link-color: #2481cc;
+    --tg-theme-button-color: #2481cc;
+    --tg-theme-button-text-color: #ffffff;
+    --error-color: #ff4444;
+    --success-color: #4CAF50;
+    --transition-speed: 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.form-container {
+    background-color: var(--tg-theme-bg-color);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease-out;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+}
+
+h2, h3 {
+    margin: 0 0 20px 0;
+    text-align: center;
+    color: var(--tg-theme-text-color);
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.form-step {
+    margin-bottom: 30px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all var(--transition-speed) ease-out;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--tg-theme-text-color);
+    transition: color var(--transition-speed);
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--tg-theme-hint-color);
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all var(--transition-speed);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--tg-theme-button-color);
+    box-shadow: 0 0 0 3px rgba(36, 129, 204, 0.1);
+    transform: translateY(-2px);
+}
+
+.input-field:invalid {
+    border-color: var(--error-color);
+}
+
+.error-message {
+    display: none;
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 8px;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.input-field:invalid + .error-message {
+    display: block;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(36, 129, 204, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.secondary {
+    background-color: var(--tg-theme-hint-color);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.category-btn {
+    padding: 16px;
+    border: 2px solid var(--tg-theme-button-color);
+    border-radius: 12px;
+    background-color: transparent;
+    color: var(--tg-theme-button-color);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-weight: 500;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(36, 129, 204, 0.1);
+}
+
+.category-btn.selected {
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    transform: scale(1.02);
+}
+
+textarea.input-field {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+#confirmation-data {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 2px solid var(--tg-theme-hint-color);
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.02);
+    transition: all var(--transition-speed);
+}
+
+#confirmation-data:hover {
+    border-color: var(--tg-theme-button-color);
+    box-shadow: 0 4px 12px rgba(36, 129, 204, 0.1);
+}
+
+#confirmation-data p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Добавляем анимацию для появления элементов */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-step:not(.hidden) {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Добавляем стили для успешного состояния */
+.input-field:valid {
+    border-color: var(--success-color);
+}
+
+/* Добавляем стили для фокуса на лейблах */
+.input-group:focus-within label {
+    color: var(--tg-theme-button-color);
+}
